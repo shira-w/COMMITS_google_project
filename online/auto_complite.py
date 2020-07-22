@@ -1,9 +1,10 @@
 import re
-from offline.init import dict_
-from offline.init import map_to_main_sub
-from offline.init import files
-import linecache
+from init import *
+from init import dict_
+from init import map_to_main_sub
+from init import files
 
+import linecache
 
 #dict={str:str}   dict{regular:str} regular"ab"
 def str_to_regular(str): #ba -># b.       dict["ba"]   dict["b."]  startwith
@@ -15,14 +16,18 @@ def str_to_regular(str): #ba -># b.       dict["ba"]   dict["b."]  startwith
 
 
 def get_best_k_completions(prefix):
+    print(files)
     atoComp=[]
     comp = dict_.get(prefix)
     if comp:
         print("there is comp")
         for c in comp:
-            str_sen=linecache.getline(files[c[0]], files[c[1]])
-            offset=str_sen.index(prefix)
-            atoComp.append(AutoCompleteDataClass(str_sen, c[0], c[1],offset, c[2]))
+            print(files[c[0]])
+            print(c[1])
+            str_sen=linecache.getline(files[c[0]], c[1])
+            print(str_sen)
+            #offset=str_sen.index(prefix)
+            atoComp.append(AutoCompleteDataClass(str_sen, c[0], c[1],1, c[2]))
         return atoComp
 
     comp2 = dict_.get(map_to_main_sub.get(str_to_regular(prefix)))
@@ -34,3 +39,5 @@ def get_best_k_completions(prefix):
             atoComp.append(AutoCompleteDataClass(str_sen, c[0], c[1], offset, c[2]))
         return atoComp
     return None
+
+#print(get_best_k_completions("on"))
