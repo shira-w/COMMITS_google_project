@@ -5,7 +5,7 @@ from os.path import join
 # class names
 from auto_complete_data import AutoCompleteDataClass
 
-global dict_
+#global dict_
 dict_ = {}
 
 map_to_main_sub = {}  #studen.? #stude.t
@@ -19,8 +19,14 @@ def read_file(file_name):
 def sub_strings(line):
     list = []
     for i in range(1, len(line)):
+        #for j in range(2,len(line)):
         list.append(line[:i])
+        #j=2
 
+         #while(j!=len(line)):
+            #if line[i-1]==" ":
+                #list.append[i:i+j]
+                #j=j+1
     return list
 
 
@@ -88,7 +94,8 @@ def from_key_to_regulars(key):
 
 def init_map_to_main_sub(): #student   .tduent s.udde
     for k in dict_.keys():
-        if len(k) != 1 and (k[1] != " " or len(k) != 2):
+        #print(k)
+        if len(k)>2: #!= 1 and (k[1] != " " or len(k) != 2):
             for reg in from_key_to_regulars(k):
                 map_to_main_sub[reg] = k
 

@@ -1,8 +1,8 @@
 import re
-from init import *
 from init import dict_
 from init import map_to_main_sub
 from init import files
+from auto_complete_data import AutoCompleteDataClass
 
 import linecache
 
@@ -34,9 +34,9 @@ def get_best_k_completions(prefix):
 
     if comp2:
         for c in comp2:
-            str_sen = linecache.getline(files[c[0]], files[c[1]])
-            offset = str_sen.index(prefix)
-            atoComp.append(AutoCompleteDataClass(str_sen, c[0], c[1], offset, c[2]))
+            str_sen = linecache.getline(files[c[0]], c[1])
+            #offset = str_sen.index(prefix)
+            atoComp.append(AutoCompleteDataClass(str_sen, c[0], c[1], 1, c[2]))
         return atoComp
     return None
 
