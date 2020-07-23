@@ -7,7 +7,6 @@ from auto_complete_data import AutoCompleteDataClass
 
 #global dict_
 dict_ = {}
-
 map_to_main_sub = {}  #studen.? #stude.t
 files = []
 
@@ -95,9 +94,9 @@ def from_key_to_regulars(key):
 def init_map_to_main_sub(): #student   .tduent s.udde
     for k in dict_.keys():
         #print(k)
-        if len(k)>2: #!= 1 and (k[1] != " " or len(k) != 2):
-            for reg in from_key_to_regulars(k):
-                map_to_main_sub[reg] = k
+        #if len(k)!= 1 and (k[1] != " " or len(k) != 2):
+        for reg in from_key_to_regulars(k):
+            map_to_main_sub[reg] = k
 
 
 
